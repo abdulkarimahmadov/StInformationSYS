@@ -1,0 +1,44 @@
+# .NET build outputs
+bin/
+obj/
+
+# IDE settings
+.vs/
+.vscode/
+*.user
+*.suo
+*.userprefs
+
+# Package directories
+packages/
+node_modules/
+
+# NuGet
+*.nupkg
+nuget.exe
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Test results
+TestResults/
+
+# Rider
+.idea/
+*.sln.iml
+
+# VS Code
+.vscode/
+
+# Application data files
+*.mdf
+*.ldf
+
+# Secret files
+appsettings.*.json
+!appsettings.json
+!appsettings.Development.json

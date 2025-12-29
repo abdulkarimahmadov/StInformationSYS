@@ -1,0 +1,117 @@
+@model SIS.Web.ViewModels.EnrollmentViewModel
+
+@{
+    ViewData["Title"] = "Enrollment Details";
+}
+
+<div class="container">
+    <div class="row mb-4">
+        <div class="col">
+            <h2><i class="fas fa-clipboard-list me-2"></i>Enrollment Details</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0"><i class="fas fa-user-graduate me-2"></i>Student Information</h5>
+                </div>
+                <div class="card-body">
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.StudentNumber)</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.StudentNumber)</dd>
+
+                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.StudentName)</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.StudentName)</dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="fas fa-book me-2"></i>Course Information</h5>
+                </div>
+                <div class="card-body">
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.CourseCode)</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.CourseCode)</dd>
+
+                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.CourseName)</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.CourseName)</dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="mb-0"><i class="fas fa-chart-line me-2"></i>Enrollment Status & Grade</h5>
+                </div>
+                <div class="card-body">
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.EnrollmentDate)</dt>
+                        <dd class="col-sm-8">@Model.EnrollmentDate.ToString("MMMM dd, yyyy")</dd>
+
+                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Status)</dt>
+                        <dd class="col-sm-8">
+                            @switch (Model.Status)
+                            {
+                                case "Enrolled":
+                                    <span class="badge bg-success">@Model.Status</span>
+                                    break;
+                                case "Completed":
+                                    <span class="badge bg-info">@Model.Status</span>
+                                    break;
+                                case "Dropped":
+                                    <span class="badge bg-danger">@Model.Status</span>
+                                    break;
+                                default:
+                                    <span class="badge bg-secondary">@Model.Status</span>
+                                    break;
+                            }
+                        </dd>
+
+                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Grade)</dt>
+                        <dd class="col-sm-8">@(Model.Grade?.ToString("F1") ?? "N/A")%</dd>
+
+                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.LetterGrade)</dt>
+                        <dd class="col-sm-8">
+                            @if (!string.IsNullOrEmpty(Model.LetterGrade))
+                            {
+                                <span class="badge bg-primary fs-5">@Model.LetterGrade</span>
+                            }
+                            else
+                            {
+                                <span class="text-muted">Not graded yet</span>
+                            }
+                        </dd>
+
+                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.AttendancePercentage)</dt>
+                        <dd class="col-sm-8">@(Model.AttendancePercentage?.ToString("F1") ?? "N/A")%</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="fas fa-cogs me-2"></i>Actions</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">
+                            <i class="fas fa-edit me-1"></i>Edit Enrollment
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">
+                            <i class="fas fa-trash me-1"></i>Delete Enrollment
+                        </a>
+                        <a asp-action="Index" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left me-1"></i>Back to List
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

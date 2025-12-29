@@ -1,0 +1,143 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="display-5">
+                <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+            </h1>
+            <p class="lead text-muted">Welcome to the Student Information System</p>
+        </div>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card bg-primary text-white h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="text-uppercase mb-1">Total Students</h6>
+                            <h2 class="mb-0">@ViewBag.TotalStudents</h2>
+                        </div>
+                        <i class="fas fa-user-graduate fa-3x opacity-50"></i>
+                    </div>
+                </div>
+                <div class="card-footer bg-transparent border-0">
+                    <a asp-controller="Student" asp-action="Index" class="text-white text-decoration-none">
+                        View Details <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-success text-white h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="text-uppercase mb-1">Total Courses</h6>
+                            <h2 class="mb-0">@ViewBag.TotalCourses</h2>
+                        </div>
+                        <i class="fas fa-book fa-3x opacity-50"></i>
+                    </div>
+                </div>
+                <div class="card-footer bg-transparent border-0">
+                    <a asp-controller="Course" asp-action="Index" class="text-white text-decoration-none">
+                        View Details <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-info text-white h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="text-uppercase mb-1">Enrollments</h6>
+                            <h2 class="mb-0">@ViewBag.TotalEnrollments</h2>
+                        </div>
+                        <i class="fas fa-clipboard-list fa-3x opacity-50"></i>
+                    </div>
+                </div>
+                <div class="card-footer bg-transparent border-0">
+                    <a asp-controller="Enrollment" asp-action="Index" class="text-white text-decoration-none">
+                        View Details <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-warning text-dark h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="text-uppercase mb-1">Current Semester</h6>
+                            <h5 class="mb-0">@ViewBag.CurrentSemester</h5>
+                        </div>
+                        <i class="fas fa-calendar-alt fa-3x opacity-50"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <h4 class="mb-3"><i class="fas fa-bolt me-2"></i>Quick Actions</h4>
+        </div>
+        <div class="col-md-3">
+            <a asp-controller="Student" asp-action="Create" class="btn btn-outline-primary btn-lg w-100 mb-3">
+                <i class="fas fa-user-plus me-2"></i>Add Student
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a asp-controller="Course" asp-action="Create" class="btn btn-outline-success btn-lg w-100 mb-3">
+                <i class="fas fa-plus-circle me-2"></i>Add Course
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a asp-controller="Enrollment" asp-action="Create" class="btn btn-outline-info btn-lg w-100 mb-3">
+                <i class="fas fa-clipboard-check me-2"></i>New Enrollment
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a asp-controller="Student" asp-action="Index" class="btn btn-outline-secondary btn-lg w-100 mb-3">
+                <i class="fas fa-search me-2"></i>Search Students
+            </a>
+        </div>
+    </div>
+
+    <!-- Features Overview -->
+    <div class="row">
+        <div class="col-12">
+            <h4 class="mb-3"><i class="fas fa-star me-2"></i>System Features</h4>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-users text-primary me-2"></i>Student Management</h5>
+                    <p class="card-text">Register and manage student profiles, track academic progress, and maintain comprehensive student records.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-book-open text-success me-2"></i>Course Management</h5>
+                    <p class="card-text">Create courses, assign instructors, manage schedules, and track course capacity and enrollment status.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-chart-line text-info me-2"></i>Enrollment & Grades</h5>
+                    <p class="card-text">Handle course registration, manage enrollments, and track student grades and academic performance.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
