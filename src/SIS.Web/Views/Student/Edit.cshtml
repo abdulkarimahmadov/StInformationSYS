@@ -1,0 +1,135 @@
+@model SIS.Web.ViewModels.EditStudentViewModel
+
+@{
+    ViewData["Title"] = "Edit Student";
+}
+
+<div class="container">
+    <div class="row mb-4">
+        <div class="col">
+            <h2><i class="fas fa-user-edit me-2"></i>Edit Student</h2>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <form asp-action="Edit" method="post">
+                <input type="hidden" asp-for="Id" />
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5 class="mb-3">Personal Information</h5>
+
+                        <div class="mb-3">
+                            <label asp-for="StudentNumber" class="form-label"></label>
+                            <input asp-for="StudentNumber" class="form-control" readonly />
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="FirstName" class="form-label"></label>
+                                <input asp-for="FirstName" class="form-control" />
+                                <span asp-validation-for="FirstName" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="LastName" class="form-label"></label>
+                                <input asp-for="LastName" class="form-control" />
+                                <span asp-validation-for="LastName" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label"></label>
+                            <input asp-for="Email" class="form-control" type="email" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="PhoneNumber" class="form-label"></label>
+                            <input asp-for="PhoneNumber" class="form-control" />
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Gender" class="form-label"></label>
+                            <select asp-for="Gender" class="form-select">
+                                <option value="">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <span asp-validation-for="Gender" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h5 class="mb-3">Address & Academic Information</h5>
+
+                        <div class="mb-3">
+                            <label asp-for="Address" class="form-label"></label>
+                            <input asp-for="Address" class="form-control" />
+                            <span asp-validation-for="Address" class="text-danger"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="City" class="form-label"></label>
+                                <input asp-for="City" class="form-control" />
+                                <span asp-validation-for="City" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Country" class="form-label"></label>
+                                <input asp-for="Country" class="form-control" />
+                                <span asp-validation-for="Country" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="PostalCode" class="form-label"></label>
+                            <input asp-for="PostalCode" class="form-control" />
+                            <span asp-validation-for="PostalCode" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="GradeLevel" class="form-label"></label>
+                            <select asp-for="GradeLevel" class="form-select">
+                                @for (int i = 1; i <= 12; i++)
+                                {
+                                    <option value="@i">Grade @i</option>
+                                }
+                            </select>
+                            <span asp-validation-for="GradeLevel" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Status" class="form-label"></label>
+                            <select asp-for="Status" class="form-select">
+                                <option value="Active">Active</option>
+                                <option value="Inactive">Inactive</option>
+                                <option value="Graduated">Graduated</option>
+                                <option value="Suspended">Suspended</option>
+                            </select>
+                            <span asp-validation-for="Status" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="d-flex justify-content-between">
+                    <a asp-action="Index" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left me-1"></i>Back to List
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save me-1"></i>Save Changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
